@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')7snja76g+%qqpptqbmdl^t_7va&l$oah5uc7h@s*gggk(0g-s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'blog_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogdb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '',
+        'NAME': 'csunny$blogdb',
+        'USER': 'csunny',
+        'PASSWORD': 'aa123456',
+        'HOST': 'csunny.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
@@ -124,7 +124,7 @@ AUTH_USER_MODEL = 'blog.User'
 
 # 网站的基本信息配置
 SITE_URL = 'http://localhost:8000/'
-SITE_NAME = 'cfqsunny的个人博客'
+SITE_NAME = 'Magic的个人博客'
 SITE_DESC = "Sometimes the only way to move forward is to revisit the things in your past that were holding your back.you have to deal with them head on ,no matter how sacre they may be ,because once you do you will see that you can go further than you ever imagined!"
 WEIBO_SINA = 'http://weibo.sina.com/'
 WEIBO_TENCENT = 'http://weibo.qq.com/yopoing'
