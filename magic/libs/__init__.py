@@ -3,7 +3,3 @@
 """
 @author: magic
 """
-DEBUG = True
-
-
-ALLOWED_HOSTS = ['*']
