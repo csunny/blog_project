@@ -15,6 +15,7 @@ import json
 
 logger = logging.getLogger('blog.views')
 
+
 # Create your views here.
 def global_setting(request):
     # 站点基本信息
@@ -33,15 +34,16 @@ def global_setting(request):
     tag_list = Tag.objects.all()
     # 友情链接数据
     link_list =Links.objects.all()
-    #浏览排行
+    # 浏览排行
     click_count_list = Article.objects.order_by('-click_count')
     # print click_count_list
     # 评论排行
     comment_count_list = Comment.objects.values('article').annotate(comment_count=Count('article')).order_by('-comment_count')
     article_comment_list = [Article.objects.get(pk=comment['article']) for comment in comment_count_list]
-    #站长推荐
+    # 站长推荐
     article_is_recommend = Article.objects.filter(is_recommend = '1')
     return locals()
+
 
 def index(request):
     try:
@@ -52,6 +54,7 @@ def index(request):
         print e
         logger.error(e)
     return render(request, 'index.html', locals())
+
 
 def archive(request):
     try:
@@ -64,22 +67,24 @@ def archive(request):
         logger.error(e)
     return render(request, 'archive.html', locals())
 
+
 # 按标签查询对应的文章列表
 def tag(request):
     try:
-        #获取标签id
-        tid = request.GET.get('tid',None)
+        # 获取标签id
+        tid = request.GET.get('tid', None)
 
         try:
             # 获取标签信息
             tag = Tag.objects.get(pk=tid)
         except Tag.DoesNotExist:
             return render(request, 'failure.html', {'reason': '标签不存在'})
-        article_list = Article.objects.filter(tag = tag)
+        article_list = Article.objects.filter(tag=tag)
         article_list = getPage(request, article_list)
     except Exception as e:
         logger.error(e)
     return render(request, 'tag.html', locals())
+
 
 # 分页代码
 def getPage(request, article_list):
@@ -90,6 +95,7 @@ def getPage(request, article_list):
     except (EmptyPage, InvalidPage, PageNotAnInteger):
         article_list = paginator.page(1)
     return article_list
+
 
 # 文章详情
 def article(request):
@@ -124,12 +130,13 @@ def article(request):
         logger.error(e)
     return render(request, 'article.html', locals())
 
+
 # 提交评论
 def comment_post(request):
     try:
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
-            #获取表单信息
+            # 获取表单信息
             comment = Comment.objects.create(username=comment_form.cleaned_data["author"],
                                              email=comment_form.cleaned_data["email"],
                                              url=comment_form.cleaned_data["url"],
@@ -143,6 +150,7 @@ def comment_post(request):
         logger.error(e)
     return redirect(request.META['HTTP_REFERER'])
 
+
 # 注销
 def do_logout(request):
     try:
@@ -151,6 +159,7 @@ def do_logout(request):
         print e
         logger.error(e)
     return redirect(request.META['HTTP_REFERER'])
+
 
 # 注册
 def do_reg(request):
@@ -177,6 +186,7 @@ def do_reg(request):
         logger.error(e)
     return render(request, 'reg.html', locals())
 
+
 # 登录
 def do_login(request):
     try:
@@ -200,6 +210,7 @@ def do_login(request):
     except Exception as e:
         logger.error(e)
     return render(request, 'login.html', locals())
+
 
 def category(request):
     try:
