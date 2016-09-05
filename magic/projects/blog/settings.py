@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'blog.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -73,8 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog.wsgi.application'
-
+WSGI_APPLICATION = 'wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -125,7 +124,13 @@ AUTH_USER_MODEL = 'blog.User'
 # 网站的基本信息配置
 SITE_URL = 'http://localhost:8000/'
 SITE_NAME = 'Magic的个人博客'
-SITE_DESC = "Sometimes the only way to move forward is to revisit the things in your past that were holding your back.you have to deal with them head on ,no matter how sacre they may be ,because once you do you will see that you can go further than you ever imagined!"
+SITE_DESC = "Sometimes the only way to move forward" \
+            " is to revisit the things in your past that" \
+            " were holding your back.you have to deal with " \
+            "them head on ,no matter how sacre they may be ," \
+            "because once you do you will see that you can go " \
+            "further than you ever imagined!"
+
 WEIBO_SINA = 'http://weibo.sina.com/'
 WEIBO_TENCENT = 'http://weibo.qq.com/yopoing'
 PRO_RSS = 'http://ww2w.baidu.com'
@@ -137,7 +142,8 @@ LOGGING = {
     'disable_existing_loggers': True,
     'formatters': {
         'standard': {
-            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}  #日志格式
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] '
+                      '[%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'}
     },
     'filters': {
     },
@@ -148,41 +154,41 @@ LOGGING = {
             'include_html': True,
             },
         'default': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': 'log/all.log',     #日志输出文件
-            'maxBytes': 1024*1024*5,                  #文件大小
-            'backupCount': 5,                         #备份份数
-            'formatter':'standard',                   #使用哪种formatters日志格式
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/django/error.log',
+            'maxBytes': 1024*1024*5,
+            'backupCount': 5,
+            'formatter': 'standard',
         },
         'error': {
-            'level':'ERROR',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': 'log/error.log',
-            'maxBytes':1024*1024*5,
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/django/error.log',
+            'maxBytes': 1024*1024*5,
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
             },
-        'console':{
+        'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'standard'
         },
         'request_handler': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename': 'log/script.log',
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/django/access.log',
             'maxBytes': 1024*1024*5,
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
             },
         'scprits_handler': {
-            'level':'DEBUG',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filename':'log/script.log',
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/django/script.log',
             'maxBytes': 1024*1024*5,
             'backupCount': 5,
-            'formatter':'standard',
+            'formatter': 'standard',
             }
     },
     'loggers': {
