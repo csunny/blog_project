@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from magic.apps.blog.upload import upload_image
+from blog.upload import upload_image
 
 urlpatterns = [
     url(r"^uploads/(?P<path>.*)$", \

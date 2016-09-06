@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from magic.apps.blog.views import *
+from blog.views import *
 
 urlpatterns = [
     url(r'^$', index, name='index'),

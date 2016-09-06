@@ -198,7 +198,7 @@ def do_login(request):
                 password = login_form.cleaned_data["password"]
                 user = authenticate(username=username, password=password)
                 if user is not None:
-                    user.backend = 'django.contrib.auth.backends.ModelBackend' # 指定默认的登录验证方式
+                    user.backend = 'django.contrib.auth.backends.ModelBackend'    # 指定默认的登录验证方式
                     login(request, user)
                 else:
                     return render(request, 'failure.html', {'reason': '登录验证失败'})

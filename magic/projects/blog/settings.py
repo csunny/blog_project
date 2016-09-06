@@ -13,21 +13,34 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import sys
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')7snja76g+%qqpptqbmdl^t_7va&l$oah5uc7h@s*gggk(0g-s'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+# Root path of project
+PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+# Add projects to path path
+PROJECT_PATH = os.path.join(PROJECT_ROOT, 'peojects')
+sys.path.insert(1, PROJECT_PATH)
+# Add apps to python pyth
+APP_PATH = os.path.join(PROJECT_ROOT, 'apps')
+sys.path.insert(1, APP_PATH)
+# Add libs to python path
+LIB_PATH = os.path.join(PROJECT_ROOT, 'libs')
+sys.path.insert(1, LIB_PATH)
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
+ADMINS = (
+    ('cfqsunny@163.com'),
+)
+DATE_FORMAT = 'Y-m-d'
+DATETIME_FORMAT = 'Y-m-d H:i:s'
 
 # Application definition
 
@@ -57,11 +70,10 @@ ROOT_URLCONF = 'urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR,  'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -85,7 +97,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PORT': 3306,
     }
 }
 
@@ -110,13 +122,13 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,  'static'),
+    os.path.join(PROJECT_PATH,  'static'),
 )
 
 MEDIA_URL = '/uploads/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,  'uploads')
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected')
+MEDIA_ROOT = os.path.join(PROJECT_PATH,  'uploads')
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'collected')
 
 # 自定义用户model
 AUTH_USER_MODEL = 'blog.User'
