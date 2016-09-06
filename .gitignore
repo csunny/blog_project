@@ -3,3 +3,5 @@ __pycache__
 blog/migrations/*
 .idea
 
+# settings
+settings_local.py
