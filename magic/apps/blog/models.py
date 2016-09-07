@@ -58,7 +58,7 @@ class ArticleManager(models.Manager):
         distinct_date_list = []
         date_list = self.values('date_publish')
         for date in date_list:
-            date = date['date_publish'].strftime(u'%Y/%m文章存档')
+            date = date['date_publish'].strftime('%Y/%m文章存档')
             if date not in distinct_date_list:
                 distinct_date_list.append(date)
         return distinct_date_list
