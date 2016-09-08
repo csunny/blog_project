@@ -3,5 +3,3 @@
 """
 @author: magic
 """
-import requests
-
