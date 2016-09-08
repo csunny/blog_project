@@ -135,7 +135,7 @@ AUTH_USER_MODEL = 'blog.User'
 
 # 网站的基本信息配置
 SITE_URL = 'http://localhost:8000/'
-SITE_NAME = 'Magic的个人博客'
+SITE_NAME = '陈发强的个人博客'
 SITE_DESC = "Sometimes the only way to move forward" \
             " is to revisit the things in your past that" \
             " were holding your back.you have to deal with " \
@@ -143,10 +143,10 @@ SITE_DESC = "Sometimes the only way to move forward" \
             "because once you do you will see that you can go " \
             "further than you ever imagined!"
 
-WEIBO_SINA = 'http://weibo.sina.com/'
-WEIBO_TENCENT = 'http://weibo.qq.com/yopoing'
-PRO_RSS = 'http://ww2w.baidu.com'
-PRO_EMAIL = 'yopoing@vip.qq.com'
+WEIBO_SINA = ''
+WEIBO_TENCENT = ''
+PRO_RSS = ''
+PRO_EMAIL = ''
 
 # 自定义日志输出信息
 LOGGING = {
