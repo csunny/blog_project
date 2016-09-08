@@ -3,7 +3,7 @@
 --------------------------------
 | Version | v1.0.0     |
 | :------------- | :------------- |
-|  web      | http://csunny.pythonanywhere.com       
+|  Web demo     | http://csunny.pythonanywhere.com     
 |  Source   | https://github.com/csunny/blog_project/
 | Keywords  | 个人博客, django, mysql, 爬虫
 
