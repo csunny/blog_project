@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from django.contrib import admin
 from models import *
+from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import ugettext_lazy as _
 
 
 # Register your models here.
@@ -27,7 +29,25 @@ class ArticleAdmin(admin.ModelAdmin):
             '/static/js/kindeditor-4.1.10/config.js',
         )
 
-admin.site.register(User)
+
+# 解决admin后台显示不一致的问题
+class BlogUserAdmin(UserAdmin):
+    filesets = (
+        (None, {'fields': ('username', 'email', 'password')}),
+        (_('Personal info'), {'fields': ('email', 'qq', 'phone')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
+                                       'groups', 'user_permissions')}),
+        (_('Important dates'), {'fields': {'last_login', 'date_joined'}}),
+    )
+
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide', ),
+            'fields': ('username', 'email', 'password1', 'password2'),
+        }),
+    )
+
+admin.site.register(User, BlogUserAdmin)
 admin.site.register(Tag)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category)
