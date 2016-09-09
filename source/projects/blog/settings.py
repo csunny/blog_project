@@ -51,6 +51,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # TODO  use xadmin replace admin
+
     'blog',
 )
 
