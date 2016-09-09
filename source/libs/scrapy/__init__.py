@@ -6,6 +6,15 @@
 import requests
 url = ''
 
+
+class Comsumer(object):
+    pass
+
+
+class Producer(object):
+    pass
+
+
 data = {}
 s = requests.get(url, params=data)
 
