@@ -95,6 +95,9 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'init_command': 'SET default_storage_engine=INNODB',
+        },
         'NAME': 'blogdb',
         'USER': 'root',
         'PASSWORD': '123456',
