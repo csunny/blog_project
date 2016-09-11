@@ -106,6 +106,7 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = ['blog.routers.BlogRouter']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

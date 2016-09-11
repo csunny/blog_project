@@ -3,3 +3,4 @@
 """
 @author: magic
 """
+from router import BlogRouter
