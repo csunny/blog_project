@@ -1,30 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-# 用户模型.
-# 第一种：采用的继承方式扩展用户信息（本系统采用）
-# 扩展：关联的方式去扩展用户信息
 
-
-class User(AbstractUser):
-    avatar = models.ImageField(upload_to='avatar/%Y/%m', default='avatar/default.png', max_length=200, blank=True, null=True, verbose_name=u'用户头像')
-    qq = models.CharField(max_length=20, blank=True, null=True, verbose_name=u'QQ号码')
-    mobile = models.CharField(max_length=11, blank=True, null=True, unique=True, verbose_name=u'手机号码')
-    url = models.URLField(max_length=100, blank=True, null=True, verbose_name=u'个人网页地址')
-
-    class Meta:
-        verbose_name = u'用户'
-        verbose_name_plural = verbose_name
-        ordering = ['-id']
-
-    def __unicode__(self):
-        return self.username
-
-
-# tag（标签）
 class Tag(models.Model):
     name = models.CharField(max_length=30, verbose_name=u'标签名称')
 
@@ -123,19 +102,3 @@ class Links(models.Model):
         return self.title
 
 
-# 广告
-class Ad(models.Model):
-    title = models.CharField(max_length=50, verbose_name=u'广告标题')
-    description = models.CharField(max_length=200,  verbose_name=u'广告描述')
-    image_url = models.ImageField(upload_to=u'ad/%Y/%m', verbose_name=u'图片路径')
-    callback_url = models.URLField(null=True, blank=True, verbose_name=u'回调url')
-    date_publish = models.DateTimeField(auto_now_add=True, verbose_name=u'发布时间')
-    index = models.IntegerField(default=999, verbose_name=u'排列顺序(从小到大)')
-
-    class Meta:
-        verbose_name = u'广告'
-        verbose_name_plural = verbose_name
-        ordering = ['index', 'id']
-
-    def __unicode__(self):
-        return self.title
