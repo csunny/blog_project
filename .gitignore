@@ -5,3 +5,4 @@ blog/migrations/*
 
 # settings
 settings_local.py
+local_settings.py
