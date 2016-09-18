@@ -3,7 +3,6 @@
 """
 @author: magic
 """
-from blog.models import Links
 from django.contrib import admin
+from blog.models import User
 
-admin.site.register(Links)

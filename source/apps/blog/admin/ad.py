@@ -3,7 +3,7 @@
 """
 @author: magic
 """
-from blog.models import Links
 from django.contrib import admin
+from blog.models import Ad
 
-admin.site.register(Links)
+admin.site.register(Ad)
