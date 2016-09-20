@@ -1,3 +1,8 @@
+#!usr/bin/env python
+# -*- coding:utf-8 -*-
+"""
+@author: magic
+"""
 # -*- coding: utf-8 -*-
 import logging
 from django.shortcuts import render, redirect, HttpResponse
@@ -8,8 +13,8 @@ from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
 from django.db import connection
 from django.db.models import Count
-from models import *
-from forms import *
+from blog.models import *
+from blog.forms import *
 from datetime import datetime
 import json
 
