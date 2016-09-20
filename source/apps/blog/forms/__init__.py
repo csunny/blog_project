@@ -3,4 +3,4 @@
 """
 @author: magic
 """
-from forms import *
+from forms import LoginForm, RegForm, CommentForm
