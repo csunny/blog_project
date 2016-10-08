@@ -3,3 +3,4 @@
 """
 @author: magic
 """
+from article import global_setting
