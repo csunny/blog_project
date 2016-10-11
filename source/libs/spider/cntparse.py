@@ -6,6 +6,7 @@
 import lxml.html
 import lxml.cssselect
 import lxml
+import re
 from common import download
 url = 'http://blog.csdn.net/column/details/datamining.html'
 
@@ -29,7 +30,8 @@ def get_dateil():
     links = [article['link'] for article in content]
     for link in links:
         article_tree = lxml.html.fromstring(download(link))
-        print article_tree
+        article_content = re.search(r'.*?', article_tree.cssselect('div#article_content > p')[0]).groups()
+        print article_content
 
 
 if __name__ == '__main__':
