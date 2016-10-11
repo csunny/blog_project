@@ -15,24 +15,25 @@ def parse_content(url):
     tree = lxml.html.fromstring(html)
     td = tree.cssselect('ul.detail_list > li')
     for lis in td:
-        yield {
-            'title': lis.cssselect('h4 > a')[0].text_content(),
-            'time': lis.cssselect('div.detail_b > span')[0].text_content(),
-            'views': lis.cssselect('div.detail_b > em')[0].text_content(),
-            'abstract': lis.cssselect('p.detail_p')[0].text_content(),
-            'link': lis.cssselect('h4 > a')[0].attrib['href'],
-        }
+        item = {}
+        item['title'] = lis.cssselect('h4 > a')[0].text_content()
+        item['time'] = lis.cssselect('div.detail_b > span')[0].text_content()
+        item['views'] = lis.cssselect('div.detail_b > em')[0].text_content()
+        item['abstract'] = lis.cssselect('p.detail_p')[0].text_content()
+        item['link'] = lis.cssselect('h4 > a')[0].attrib['href']
+        yield item
 
-        # item = {}
-        # item['title'] = lis.cssselect('h4 > a')[0].text_content()
-        # item['time'] = lis.cssselect('div.detail_b > span')[0].text_content()
-        # item['views'] = lis.cssselect('div.detail_b > em')[0].text_content()
-        # item['abstract'] = lis.cssselect('p.detail_p')[0].text_content()
-        # item['link'] = lis.cssselect('h4 > a')[0].attrib['href']
-        # yield item
+
+def get_dateil():
+    content = parse_content(url)
+    links = [article['link'] for article in content]
+    for link in links:
+        article_tree = lxml.html.fromstring(download(link))
+        print article_tree
 
 
 if __name__ == '__main__':
-    s = parse_content(url)
-    for i in s:
-        print i['title']
+    # s = parse_content(url)
+    # for i in s:
+    #     print i['link']
+    get_dateil()
