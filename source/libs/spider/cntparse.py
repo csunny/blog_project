@@ -30,7 +30,7 @@ def get_dateil():
     links = [article['link'] for article in content]
     for link in links:
         article_tree = lxml.html.fromstring(download(link))
-        article_content = re.search(r'.*?', article_tree.cssselect('div#article_content > p')[0]).groups()
+        article_content = article_tree.cssselect('div#article_content > p')[0]
         print article_content
 
 
