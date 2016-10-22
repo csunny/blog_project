@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from blog.views import *
+from blog.views.article import index, archive, article, comment_post, do_logout, do_login, do_reg, category, tag
 
 urlpatterns = [
     url(r'^$', index, name='index'),

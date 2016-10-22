@@ -46,7 +46,7 @@ def global_setting(request):
     comment_count_list = Comment.objects.values('article').annotate(comment_count=Count('article')).order_by('-comment_count')
     article_comment_list = [Article.objects.get(pk=comment['article']) for comment in comment_count_list]
     # 站长推荐
-    article_is_recommend = Article.objects.filter(is_recommend = '1')
+    article_is_recommend = Article.objects.filter(is_recommend='1')
     return locals()
 
 
@@ -56,7 +56,6 @@ def index(request):
         article_list = Article.objects.all()
         article_list = getPage(request, article_list)
     except Exception as e:
-        print e
         logger.error(e)
     return render(request, 'index.html', locals())
 
