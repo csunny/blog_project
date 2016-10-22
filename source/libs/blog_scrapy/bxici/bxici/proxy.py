@@ -22,7 +22,6 @@ class GetIp(object):
         " Judge ip's availability "
         http_url = "http://www.baidu.com/"
         https_url = "https://www.alipay.com/"
-        data = []
         for line in self.result:
             proxy_type = line[4].lower()
             url = http_url if proxy_type == 'http' else https_url
@@ -36,14 +35,13 @@ class GetIp(object):
                 code = req.status_code
                 if 200 <= code <= 300:
                     print 'Effective proxy: {}'.format(line)
-                    data.append(tuple(line))
+                    self._write_ip('../new_ips', line)
                 else:
                     print 'Invalide proxy: {}'.format(line)
-        self._write_ip('./new_ips', data)
 
     def _write_ip(self, newname, content):
-        with open(newname, 'wb') as fp:
-            csv.writer(fp).writerows(content)
+        with open(newname, 'ab+') as fp:
+            csv.writer(fp).writerow(content)
 
     def get_ip(self, newname):
         with open(newname, 'rb') as fp:
