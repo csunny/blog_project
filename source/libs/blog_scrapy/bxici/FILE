@@ -1,0 +1,2 @@
+2016-10-22 13:55:53 [scrapy] INFO: Scrapy 1.1.1 started (bot: bxici)
+2016-10-22 13:55:53 [scrapy] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'bxici.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['bxici.spiders'], 'LOG_FILE': 'FILE', 'BOT_NAME': 'bxici'}
