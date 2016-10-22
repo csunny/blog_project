@@ -8,24 +8,22 @@ import MySQLdb
 
 
 class BxiciPipeline(object):
-
     def process_item(self, item, spider):
-
         DBKWARGS = spider.settings.get('DBKWARGS')
         con = MySQLdb.connect(**DBKWARGS)
         cur = con.cursor()
-        print cur.execute('show tables')
-        # sql = ("insert into proxy(IP, PORT, TYPE, POSITION, SPEED, LAST_CHECK_TIME) "
-        #     "values(%s, %s, %s, %s, %s, %s)")
-        # lis = (item['IP'], item['PORT'], item['TYPE'], item['POSITION'], item['SPEED'],
-        #      item['LAST_CHECK_TIME'])
-        # try:
-        #     cur.execute(sql, lis)
-        # except Exception as e:
-        #     print "Insert error:{}".format(e)
-        #     con.rollback()
-        # else:
-        #     con.commit()
-        # cur.close()
-        # con.close()
+        sql = ("insert into proxy(IP, PORT, TYPE, POSITION, SPEED, LAST_CHECK_TIME)"
+               "values(%s, %s, %s, %s, %s, %s)")
+
+        lis = (item['IP'], item['PORT'], item['TYPE'], item['POSITION'], item['SPEED'], item['LAST_CHECK_TIME'])
+        try:
+            cur.execute(sql, lis)
+        except Exception as e:
+            print "Insert error{}".format(e)
+
+            con.rollback()
+        else:
+            con.commit()
+        cur.close()
+        con.close()
         return item

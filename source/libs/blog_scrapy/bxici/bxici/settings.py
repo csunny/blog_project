@@ -20,7 +20,6 @@ DBKWARGS = {
     'password': '12345670',
     'host': '192.168.1.100',
     'use_unicode': 'true',
-    'port': 3306,
     'charset': 'utf8'
 }
 
