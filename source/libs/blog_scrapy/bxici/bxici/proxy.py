@@ -5,6 +5,7 @@
 """
 import csv
 import requests
+import json
 
 
 class GetIp(object):
@@ -27,7 +28,7 @@ class GetIp(object):
             url = http_url if proxy_type == 'http' else https_url
             proxies = {'http': 'http://'+"{0}:{1}".format(line[0], line[5])}
             try:
-                req = requests.get(url=url, proxies=proxies, timeout=5)
+                req = requests.get(url=url, proxies=proxies, timeout=1)
             except Exception as e:
                 print "Request Error {}".format(e)
 
@@ -54,9 +55,45 @@ class GetIp(object):
                         ips['https'] = line[0] + ":" + line[5]
                     yield ips
 
-if __name__ == '__main__':
-    g = GetIp('../ips.csv')
+
+class ParseJson(object):
+    def __init__(self):
+        self.path = '../ips.json'
+        self.result = self._get_res()
+        self.items = self._write_to_db()
+
+    def _get_res(self):
+        with open(self.path, 'r+') as fp:
+            lines = fp.readlines()
+            return lines
+
+    def _write_to_db(self):
+        try:
+            for i, line in enumerate(self.result):
+                item = eval(line)[0]
+                yield item
+        except Exception as e:
+            pass
+
+
+# Test read data from csv file.
+def test(name):
+    g = GetIp(name)
     g.judge_ip()
+    r = g.get_ip('../new_ips')
+    for ip in r:
+        print r
+
+
+if __name__ == '__main__':
+    pj = ParseJson()
+    for i, line in enumerate(pj.result):
+        try:
+            s = eval(line)[0]
+            if not s.has_key('SPEED'):
+                print line
+        except Exception as e:
+            pass
 
 
 

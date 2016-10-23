@@ -24,6 +24,7 @@ class BxiciPipeline(object):
             con.rollback()
         else:
             con.commit()
+            print "Insert success"
         cur.close()
         con.close()
         return item

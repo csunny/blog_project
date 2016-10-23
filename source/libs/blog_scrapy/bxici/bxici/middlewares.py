@@ -3,10 +3,12 @@
 """
 @ author = magic
 """
-import base64
 import logging
-from .proxy import GetIp
-ips = GetIp('../ips.csv').get_ip('../new_ips.csv')
+from proxy import GetIp
+
+filepath = r'C:\Users\think\Desktop\new_ips.csv'
+ips_g = GetIp('../ips.csv').get_ip(filepath)
+ips = [ip for ip in ips_g]
 
 
 class ProxyMiddleware(object):
@@ -17,17 +19,20 @@ class ProxyMiddleware(object):
         # Set the location of the proxy
         if request.url.startswith('http://'):
             n = ProxyMiddleware.http_n
-            n = n if n < len(ips['http']) else 0
-            request.meta['proxy'] = "http://%s:%s" % (
-                ips['http'][n][0], int(ips['http'][n][5]))
-            logging.info('Squence - http: %s - %s' % (n, str(ips['http'][n])))
+            n = n if n < len(ips) else 0
+            request.meta['proxy'] = "http://%s" % (
+                ips[n]['http'])
+            logging.info('Squence - http: %s - %s' % (n, str(ips[n]['http'])))
             ProxyMiddleware.http_n = n + 1
 
         if request.url.startswith('https://'):
             n = ProxyMiddleware.https_n
-            n = n if n < len(ips['https']) else 0
-            request.meta['proxy'] = "https://%s:%s" % (
-                ips['https'][n][0], int(ips['https'][n][5])
+            n = n if n < len(ips) else 0
+            request.meta['proxy'] = "https://%s" % (
+                ips[n]['https']
             )
-            logging.info('Squence - http: %s - %s' % (n, str(ips['http'][n])))
+            logging.info('Squence - http: %s - %s' % (n, str(ips[n]['https'])))
             ProxyMiddleware.https_n = n + 1
+
+
+

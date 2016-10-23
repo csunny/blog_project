@@ -17,7 +17,7 @@ NEWSPIDER_MODULE = 'bxici.spiders'
 DBKWARGS = {
     'db': 'magic',
     'user': 'user',
-    'password': '12345670',
+    'passwd': '12345670',
     'host': '192.168.1.100',
     'use_unicode': 'true',
     'charset': 'utf8'
@@ -29,6 +29,8 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; rv:40.0) Gecko/20100101 Firefox/40.0'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 LOG_FILE = 'scrapy.log'
+# LOG_LEVEL = 'INFO'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
 
@@ -61,7 +63,8 @@ DOWNLOAD_DELAY = 3
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    'bxici.middlewares.MyCustomDownloaderMiddleware': 543,
+#     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+#     'bxici.middlewares.ProxyMiddleware': 100,
 # }
 
 # Enable or disable extensions
@@ -73,7 +76,7 @@ DOWNLOAD_DELAY = 3
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 # ITEM_PIPELINES = {
-#    'bxici.pipelines.BxiciPipeline': 300,
+#     'bxici.pipelines.BxiciPipeline': 300,
 # }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

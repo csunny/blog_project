@@ -4,6 +4,7 @@ blog/migrations/*
 .idea
 *.csv
 *.log
+.json
 
 # settings
 settings_local.py
