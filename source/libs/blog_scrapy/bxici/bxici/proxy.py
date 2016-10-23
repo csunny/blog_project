@@ -90,8 +90,9 @@ if __name__ == '__main__':
     for i, line in enumerate(pj.result):
         try:
             s = eval(line)[0]
-            if not s.has_key('SPEED'):
-                print line
+            s.update({'POSITION': s['POSITION'].decode('unicode-escape')})
+            if s.has_key('SPEED'):
+                print s['POSITION']
         except Exception as e:
             pass
 

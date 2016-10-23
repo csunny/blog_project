@@ -5,6 +5,7 @@
 """
 import MySQLdb
 from proxy import GetIp, ParseJson
+from pymongo import MongoClient
 
 # 插入数据库时中文用'gbk'编码格式
 # for i, item in enumerate(items):
@@ -60,6 +61,16 @@ class WriteJson(HandleDb):
                 print "Insert successfully"
 
 
+# 使用mongodb， 将数据写入mongodb中.
+class MongoHandle(object):
+    def __init__(self):
+        self.client = MongoClient('192.168.1.100', 27017)
+
+    def insert(self, item):
+        db = self.client.magic
+        db.proxy.insert(item)
+
+
 # Insert db from csv file to mysql database
 def test():
     items = GetIp('../ips.csv').result
@@ -75,5 +86,9 @@ def main():
     wj.insert()
 
 
+# 插入数据到mongodb
+def testmongo():
+    pass
+
 if __name__ == '__main__':
-   main()
+   pass
