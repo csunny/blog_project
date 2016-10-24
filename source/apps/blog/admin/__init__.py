@@ -3,3 +3,7 @@
 """
 @author: magic
 """
+from .ad import *
+from .article import *
+from .links import *
+from .user import *

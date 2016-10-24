@@ -54,8 +54,13 @@ def index(request):
     try:
         # 最新文章数据
         article_list = Article.objects.all()
+        # article_list = Article.objects.filter(id=1)
+        # article = article_list.filter(title='maiohosik')
+        # for a in article:
+        #     print a.content
         article_list = getPage(request, article_list)
     except Exception as e:
+        print e
         logger.error(e)
     return render(request, 'index.html', locals())
 
@@ -130,7 +135,6 @@ def article(request):
             if comment.pid is None:
                 comment_list.append(comment)
     except Exception as e:
-        print e
         logger.error(e)
     return render(request, 'article.html', locals())
 
@@ -160,7 +164,6 @@ def do_logout(request):
     try:
         logout(request)
     except Exception as e:
-        print e
         logger.error(e)
     return redirect(request.META['HTTP_REFERER'])
 

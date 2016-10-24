@@ -3,7 +3,7 @@
 """
 @ author = magic
 """
-import MySQLdb
+# import MySQLdb
 from proxy import GetIp, ParseJson
 from pymongo import MongoClient
 
@@ -68,7 +68,12 @@ class MongoHandle(object):
 
     def insert(self, item):
         db = self.client.magic
-        db.proxy.insert(item)
+        try:
+            db.proxy.insert_one(item)
+        except Exception as e:
+            print e
+        else:
+            print "Insert succesfully"
 
 
 # Insert db from csv file to mysql database
@@ -88,7 +93,13 @@ def main():
 
 # 插入数据到mongodb
 def testmongo():
-    pass
+    pj = ParseJson()
+    items = pj.items
+    for item in items:
+        item.update({'POSITION': item['POSITION'].decode('unicode-escape')})
+        mh = MongoHandle()
+        mh.insert(item)
+
 
 if __name__ == '__main__':
-   pass
+   testmongo()
