@@ -16,7 +16,7 @@ class XiciSpider(scrapy.Spider):
 
     def start_requests(self):
         reqs = []
-        for i in range(300, 1085):
+        for i in range(600, 1085):
             print "Downloading: http://www.xicidaili.com/nn/{}".format(i)
             req = scrapy.Request("http://www.xicidaili.com/nn/{}".format(i))
             reqs.append(req)
