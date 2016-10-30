@@ -58,7 +58,7 @@ class GetIp(object):
 
 class ParseJson(object):
     def __init__(self):
-        self.path = '../ips.json'
+        self.path = '../ips_3.json'
         self.result = self._get_res()
         self.items = self._write_to_db()
 
@@ -87,6 +87,7 @@ def test(name):
 
 if __name__ == '__main__':
     pj = ParseJson()
+
     for i, line in enumerate(pj.result):
         try:
             s = eval(line)[0]

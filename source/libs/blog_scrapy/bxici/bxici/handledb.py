@@ -3,7 +3,7 @@
 """
 @ author = magic
 """
-# import MySQLdb
+import MySQLdb
 from proxy import GetIp, ParseJson
 from pymongo import MongoClient
 
