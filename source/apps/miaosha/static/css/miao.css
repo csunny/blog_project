@@ -1,0 +1,129 @@
+ol, ul {
+  list-style: none;
+}
+.mp-content {
+  margin-top: 0;
+  width: 715px;
+  float: left;
+}
+.mp-content .itemlist .mp-single-item{
+position: relative;overflow:hidden;
+}
+.mp-content .mp-single-item {
+  border: 1px solid #ccc;
+  width: 713px;
+  height: 200px;
+  bottom: 210px;
+  margin-bottom: 10px;
+  position: relative;
+  background-color: #fff;
+}
+
+.mp-content .mp-single-item .item-info {
+  background: #fff;
+  float: left;
+  width: 237px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.mp-content .mp-single-item .item-info img {
+  width: 86px;
+  height: 43px;
+}
+
+.mp-content .mp-single-item .item-info .item-discount {
+  color: #888;
+  font-size: 14px;
+  padding:  0;
+  overflow: hidden;
+  margin:3px 0;
+}
+
+.mp-content .mp-single-item .item-info .item-discount em {
+  font-size: 30px;
+  font-style: normal;
+  color: #d22635;
+}
+
+.mp-content .mp-single-item .item-info .item-stitle {
+  color: #333;
+  font-size: 14px;
+  height: 18px;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin:10px 0 0 0;
+  padding:0;
+}
+
+.mp-content .mp-single-item .item-info .item-time {
+  font-size: 12px;
+  color: #fff;
+  line-height: 20px;
+  background-color: #999;
+  padding: 0 15px;
+  display: inline-block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.mp-content .mp-single-item .item-info .item-source {
+  font-size: 12px;
+  position: relative;
+  color: #d22635;
+  display: block;
+  margin:0;
+  padding:0;
+}
+.mp-content .mp-single-item .item-pic {
+  width: 474px;
+  height: 198px;
+  padding: 1px;
+  float: right;
+  position: relative;
+}
+.mp-content .mp-single-item .item-pic img {
+  width: 100%;
+  height: 100%;
+}
+
+img.load-bear {
+  background: url("loading.gif") center center no-repeat;
+}
+
+.mp-content .mp-single-item .brand-collected {
+  background: #fe9601;
+}
+.mp-content .mp-single-item .linkhover {
+  position: absolute;
+  display: none;
+  top: 26px;
+  left: 170px;
+  border: 0;
+  outline: 0;
+  width: 60px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  z-index: 5;
+}
+.mp-content .mp-single-item .mp-item-link {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 713px;
+  height: 200px;
+  background: #fff;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
