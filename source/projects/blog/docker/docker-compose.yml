@@ -1,0 +1,10 @@
+version: "2"
+services:
+    blog:
+        build: .
+        command: python manage.py runserver 0.0.0.0:80
+        volumes:
+            - /data/www/GitHub/blog_project:/data/www/GitHub/blog_project
+        ports:
+            - "50090:80"
+
