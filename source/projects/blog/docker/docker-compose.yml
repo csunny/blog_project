@@ -1,10 +1,23 @@
 version: "2"
 services:
+
+	db:
+	  image: mysql
+	  expose:
+	    - "3306"
+	  environment:
+	    MYSQL_DATABASE: blogdb
+	    MYSQL_ROOT_PASSWORD: 123456
+
     blog:
-        build: .
-        command: python manage.py runserver 0.0.0.0:80
-        volumes:
-            - /data/www/GitHub/blog_project:/data/www/GitHub/blog_project
-        ports:
-            - "50090:80"
+      build: .
+      command: python manage.py runserver 0.0.0.0:80
+      volumes:
+        - /data/www/GitHub/blog_project:/data/www/GitHub/blog_project
+      ports:
+        - "50090:80"
+      links:
+        - db
+      environment:
+        - DEBUG=true
 
